@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Streja_Raluca_Lab2.Data;
 using Streja_Raluca_Lab2.Models;
 
-namespace Streja_Raluca_Lab2.Pages.Publishers
+namespace Streja_Raluca_Lab2.Pages.Authors
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Streja_Raluca_Lab2.Pages.Publishers
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; } = default!;
+        public Author Author { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace Streja_Raluca_Lab2.Pages.Publishers
                 return Page();
             }
 
-            _context.Publisher.Add(Publisher);
+            _context.Author.Add(Author);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

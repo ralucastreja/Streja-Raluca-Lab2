@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Streja_Raluca_Lab2.Data;
 using Streja_Raluca_Lab2.Models;
 
-namespace Streja_Raluca_Lab2.Pages.Publishers
+namespace Streja_Raluca_Lab2.Pages.Authors
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Streja_Raluca_Lab2.Pages.Publishers
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; } = default!;
+        public Author Author { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,15 +29,15 @@ namespace Streja_Raluca_Lab2.Pages.Publishers
                 return NotFound();
             }
 
-            var publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == id);
+            var author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (publisher == null)
+            if (author == null)
             {
                 return NotFound();
             }
             else
             {
-                Publisher = publisher;
+                Author = author;
             }
             return Page();
         }
@@ -49,11 +49,11 @@ namespace Streja_Raluca_Lab2.Pages.Publishers
                 return NotFound();
             }
 
-            var publisher = await _context.Publisher.FindAsync(id);
-            if (publisher != null)
+            var author = await _context.Author.FindAsync(id);
+            if (author != null)
             {
-                Publisher = publisher;
-                _context.Publisher.Remove(Publisher);
+                Author = author;
+                _context.Author.Remove(Author);
                 await _context.SaveChangesAsync();
             }
 

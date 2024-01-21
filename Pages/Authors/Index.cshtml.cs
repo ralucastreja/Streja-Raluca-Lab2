@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Streja_Raluca_Lab2.Data;
 using Streja_Raluca_Lab2.Models;
 
-namespace Streja_Raluca_Lab2.Pages.Publishers
+namespace Streja_Raluca_Lab2.Pages.Authors
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace Streja_Raluca_Lab2.Pages.Publishers
             _context = context;
         }
 
-        public IList<Publisher> Publisher { get;set; } = default!;
+        public IList<Author> Author { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Publisher = await _context.Publisher.ToListAsync();
+            Author = await _context.Author.ToListAsync();
         }
     }
 }

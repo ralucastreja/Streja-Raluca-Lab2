@@ -7,13 +7,17 @@ namespace Streja_Raluca_Lab2.Models
         {
         public int ID { get; set; }
         [Display(Name = "Book Title")]
-        public string Title { get; set; }
-        public string Author { get; set; }
+        public required string Title { get; set; }
+        public int AuthorID { get; set; } // foreign key
+        [Display(Name = "Author Name")]
+        public Author? Author { get; set; } // navigation property
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Price { get; set; }
         [DataType(DataType.Date)]
-        public DateTime PublishingDate { get; set; }
+        [Display(Name = "Publishing Date")]
+        public DateTime? PublishingDate { get; set; }
         public int? PublisherID { get; set; }
-        public Publisher? Publisher { get; set; } //navigation property
+        [Display(Name = "Publisher Name")]
+        public Publisher? Publisher { get; set; } // navigation property
         }
     }
